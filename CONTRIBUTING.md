@@ -1,9 +1,8 @@
 # Contribution guidelines
 **Important**:
-1. Please do not commit directly to the master branch.
-2. Commit your work to the branch that I have created for you.
-3. Send a pull request to merge the changes from your branch to the master branch.
-4. While sending a pull request, briefly explain the changes you have made.
+1. Please do not commit directly to the master branch, but instead, commit your work to a separate branch.
+2. Send a pull request to merge the changes from your branch to the master branch.
+3. While sending a pull request, briefly explain the changes you have made.
 
 Before sending pull requests from your branch, make sure that you **read the whole guidelines**. If you have any doubts or suggestions about the contribution guidelines, feel free to [create an issue](https://github.com/harshildarji/TMP-SS-2020/issues/new).
 
