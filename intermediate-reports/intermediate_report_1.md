@@ -16,6 +16,7 @@
 
 As of now, we have **49905** articles to work with after removing nulls and duplicates which we find sufficiently enough. If needed, we are ready to scrap more articles from other different sources.
 
+---
 #### In future:
 In the next two weeks, we plan to complete the pre-processing of scrapped articles.
 
@@ -27,6 +28,7 @@ Also, at this stage, we will decide about the feature we will work with. For exa
 
 At the end of the pre-processing step, we plan to keep a *single CSV* file with all the pre-processed data we need for further process.
 
+---
 #### Open question(s):
 As of now, we plan to use NLTK for pre-processing purposes, but we are open to other libraries such as SpaCy and StandfordNLP.  So, in other words, we are yet to decide which library we will proceed with. This is still in discussion in issue #1.
 
