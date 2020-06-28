@@ -1,7 +1,7 @@
 ### Intermediate report #1
 
 #### Until now:
-- Completed scraping news articles from three major news-sites (refer #2):
+- Completed scraping news articles from three major news-sites (refer [#2](https://github.com/harshildarji/TMP-SS-2020/pull/2)):
   1. News18 ([script](https://github.com/harshildarji/TMP-SS-2020/blob/master/code/scrapping/news18.py) | [csv](https://github.com/harshildarji/TMP-SS-2020/blob/master/code/scrapping/data/news18.csv))
   2. Reuters ([script](https://github.com/harshildarji/TMP-SS-2020/blob/master/code/scrapping/reuters_us_politics.py) | [csv](https://github.com/harshildarji/TMP-SS-2020/blob/master/code/scrapping/data/reuters_us_politics.csv))
   3. Times of India ([script](https://github.com/harshildarji/TMP-SS-2020/blob/master/code/scrapping/toi.py) | [csv](https://github.com/harshildarji/TMP-SS-2020/blob/master/code/scrapping/data/toi.csv))
@@ -30,7 +30,7 @@ At the end of the pre-processing step, we plan to keep a *single CSV* file with 
 
 ---
 #### Open question(s):
-As of now, we plan to use NLTK for pre-processing purposes, but we are open to other libraries such as SpaCy and StandfordNLP.  So, in other words, we are yet to decide which library we will proceed with. This is still in discussion in issue #1.
+As of now, we plan to use NLTK for pre-processing purposes, but we are open to other libraries such as SpaCy and StandfordNLP.  So, in other words, we are yet to decide which library we will proceed with. This is still in discussion in issue [#1](https://github.com/harshildarji/TMP-SS-2020/issues/1).
 
 
 
