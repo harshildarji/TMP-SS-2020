@@ -33,7 +33,7 @@ if __name__ == '__main__':
             if 'Title' in df.columns.values:
                 df['Text'] = df['Title'] + ' ' + df['Text'] + ' ' + df['Summary']
 
-            # line-by-line, clean and append to 'data.csv' along with the publisher
+            # line-by-line, clean and append to 'raw_data.csv' along with the publisher
             for line in df['Text']:
                 f.write(f'{file},{clean(line)}\n')
     f.close()
