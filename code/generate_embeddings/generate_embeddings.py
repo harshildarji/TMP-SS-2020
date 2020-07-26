@@ -32,13 +32,12 @@ def generate_embeddings(data, path):
     cores = multiprocessing.cpu_count()
     print('- using {} out of {} CPU cores'.format(cores - 1, cores))
 
-    model = Word2Vec(min_count=20,  # ignore all words with total absolute frequency than this
+    model = Word2Vec(min_count=5,  # ignore all words with total absolute frequency than this
                      window=5,
                      size=300,  # dimensionality of the feature vectors
                      sample=6e-5,  # threshold for configuring which higher-frequency words are randomly down-sampled
                      alpha=0.03,
                      min_alpha=0.0007,
-                     negative=20,  # if > 0, negative sampling will be used
                      workers=cores - 1)
 
     # build the vocabulary table

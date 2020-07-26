@@ -3,3 +3,6 @@
 .ipynb_checkpoints/
 __pycache__/
 .idea/
+
+# Files to ignore
+embeddings.model
