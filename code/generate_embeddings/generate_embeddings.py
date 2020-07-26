@@ -2,6 +2,8 @@ import multiprocessing
 from timeit import default_timer as timer
 
 import nltk
+
+nltk.download('punkt')
 import pandas as pd
 from gensim.models import Word2Vec
 
@@ -56,4 +58,4 @@ def generate_embeddings(data, path):
 
 if __name__ == '__main__':
     data = pd.read_csv('../preprocessing/data.csv')
-    generate_embeddings(data[:100], './embeddings.model')
+    generate_embeddings(data, './embeddings.model')
