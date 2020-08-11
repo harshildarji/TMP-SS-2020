@@ -3,6 +3,7 @@ import multiprocessing
 
 import numpy as np
 from gensim.models import Word2Vec
+import random
 
 word2vec_model = Word2Vec.load('../generate_embeddings/embeddings.model')
 
@@ -23,30 +24,30 @@ def generate_seed_words(combination):
     avg_vector = np.mean(vectors, axis=0)
 
     # get top 15 similar words for a word using the trained Word2Vec model
-    similar_words = [x[0] for x in word2vec_model.wv.most_similar(positive=[avg_vector], topn=15)]
+    similar_words = [x[0] for x in word2vec_model.wv.most_similar(positive=[avg_vector], topn=20)]
 
     return similar_words
 
 
 def bias_word_generation():
     seedwords = ['harassing', 'dishonourable', 'politicizing', 'victimisation', 'hypocrite', 'electioneering', 'humiliation', 'condemnation', 'reciprocate', 'scandal']
+    bias_words = seedwords.copy()
 
-    for n_combo in range(3, 6):
-        combinations = generate_combinations(seedwords, n_combo)
-        print('Combination of {}, Number of combinations: {}'.format(n_combo, len(combinations)))
+    for i in range(10):
+        combinations = generate_combinations(list(set(seedwords)), 10)
 
         pool = multiprocessing.Pool()
         similar_words = pool.map(generate_seed_words, combinations)
         pool.close()
 
-        seedwords += [word for sublist in similar_words for word in sublist]
+        similar_words = [word for sublist in similar_words for word in sublist]
+        seedwords = random.sample(similar_words, 20)
+        bias_words += similar_words
 
-        # apply set and convert back to list to make sure there are no repeating words
-        seedwords = list(set(seedwords))
-        print('- New seed-words length: {}'.format(len(seedwords)))
+        print('Loop: {}, Bias words length: {}'.format(i, len(set(bias_words))))
 
     # sort and write the bias words to the text file
-    bias_words = sorted(seedwords)
+    bias_words = sorted(list(set(bias_words)))
     with open('bias_words.txt', 'w') as f:
         for item in bias_words:
             f.write('{}\n'.format(item))
