@@ -12,7 +12,7 @@ def generate_combinations(seedwords, n):
     combinations = list()
     for i, _tuple in enumerate(itertools.combinations(random.sample(seedwords, len(seedwords)), n)):
         combinations.append(_tuple)
-        if i > 10000:
+        if i > 25000:
             break
     return combinations
 
