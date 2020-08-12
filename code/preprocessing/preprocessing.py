@@ -15,7 +15,7 @@ def clean(_text):
     This method removes any non-alphanumeric text from the given string and
     performs Lemmatization before returning the string.
     """
-    _cleaned = re.sub(r"(@[A-Za-z0-9]+)|(#[A-Za-z0-9]+)|('s)|([^A-Za-z0-9\t])|(http\S+)", ' ', _text).split()
+    _cleaned = re.sub(r"(@[A-Za-z0-9]+)|(#[A-Za-z0-9]+)|('s)|([^A-Za-z\t])|(http\S+)", ' ', _text).split()
     cleaned = [lmtzr.lemmatize(w) for w in _cleaned]
     return (' '.join(cleaned)).strip().lower()
 
