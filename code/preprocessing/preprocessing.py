@@ -1,7 +1,7 @@
-import os
 import re
 
 import nltk
+import numpy as np
 import pandas as pd
 from nltk.stem import WordNetLemmatizer
 
@@ -20,29 +20,14 @@ def clean(_text):
     return (' '.join(cleaned)).strip().lower()
 
 
-if __name__ == '__main__':
-    files = ['news18', 'reuters', 'toi']
+data = pd.read_csv('../scrapping/raw_data/raw_data.csv')
+data = data.drop(data.columns[0], axis=1).drop_duplicates(subset='ArtText').dropna().reset_index(drop=True)
+data = data[~data['ArtText'].str.contains('Please enable cookies on your web browser in order to continue.')].reset_index(drop=True)
+data['label'] = np.where((data['Democrat_Vote'] == 'Neutral') & (data['Republican_Vote'] == 'Neutral'), 0, 1)
+data['Text'] = data['ArtTitle'] + ' ' + data['ArtText'] + ' ' + data['ArtSummary']
 
-    with open('./raw_data.csv', 'w') as f:
-        f.write('publisher,text\n')
-        for file in files:
-            print(f'Working on {file}.csv...')
-            df = pd.read_csv(f'../scrapping/raw_data/{file}.csv')
-
-            # if the CSV contains 'Title' and 'Summary' columns, merge them into 'Text' column
-            if 'Title' in df.columns.values:
-                df['Text'] = df['Title'] + ' ' + df['Text'] + ' ' + df['Summary']
-
-            # line-by-line, clean and append to 'raw_data.csv' along with the publisher
-            for line in df['Text']:
-                f.write(f'{file},{clean(line)}\n')
-    f.close()
-
-    # Drop NA and duplicates!
-    data = pd.read_csv('./raw_data.csv')
-    data = data.dropna()
-    data = data.drop_duplicates(keep='first')
-    data.to_csv('./data.csv', index=False)
-
-    # delete raw_data.csv
-    os.remove('./raw_data.csv')
+with open('./data.csv', 'w') as f:
+    f.write('text,label\n')
+    for i, line in enumerate(data['Text']):
+        f.write('{},{}\n'.format(clean(line), data['label'][i]))
+f.close()

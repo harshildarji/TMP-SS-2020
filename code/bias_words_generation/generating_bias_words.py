@@ -24,17 +24,17 @@ def generate_seed_words(combination):
         vectors.append(word2vec_model.wv[i])
     avg_vector = np.mean(vectors, axis=0)
 
-    # get top 20 similar words for a word using the trained Word2Vec model
-    similar_words = [x[0] for x in word2vec_model.wv.most_similar(positive=[avg_vector], topn=20)]
+    # get top 5 similar words for a word using the trained Word2Vec model
+    similar_words = [x[0] for x in word2vec_model.wv.most_similar(positive=[avg_vector], topn=5)]
 
     return similar_words
 
 
 def bias_word_generation():
-    seedwords = ['harassing', 'dishonourable', 'politicizing', 'victimisation', 'hypocrite', 'electioneering', 'humiliation', 'condemnation', 'reciprocate', 'scandal']
+    seedwords = ['radical', 'democrat', 'republican', 'bigot', 'racist']
 
-    for i in range(100):
-        combinations = generate_combinations(list(set(seedwords)), 10)
+    for i in range(25):
+        combinations = generate_combinations(list(set(seedwords)), 5)
 
         pool = multiprocessing.Pool()
         similar_words = pool.map(generate_seed_words, combinations)
