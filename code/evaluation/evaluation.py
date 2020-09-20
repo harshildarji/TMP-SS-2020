@@ -14,10 +14,7 @@ for i in range(len(data)):
             count += 1
     df_counts.loc[i] = [text] + [label] + [count]
 
-grouped = df_counts.groupby(['label'])
-biased = grouped.get_group(1)
-unbiased = grouped.get_group(0)
-threshold = (unbiased.bias_word_count.quantile([0.75]).values[0] + biased.bias_word_count.quantile([0.25])).values[0] / 2
+threshold = df_counts.bias_word_count.quantile([0.50]).values[0]
 
 annotated = pd.DataFrame(columns=['text', 'label', 'bias_word_count', 'annotation'])
 for i in range(len(df_counts)):
@@ -32,9 +29,9 @@ ck = cohen_kappa_score(actual, predicted)
 print('Accuracy:\t{}\nPrecision:\t{}\nRecall:\t\t{}\nF1:\t\t{}\nCohen-kappa:\t{}'.format(accuracy, precision, recall, f1, ck))
 
 """
-Accuracy:       0.6050747393543525
-Precision:      0.5808531746031746
-Recall:         0.6169652265542677
-F1:             0.598364844149208
-Cohen-kappa:    0.21062286195898272
+Accuracy:		0.6050747393543525
+Precision:		0.5808531746031746
+Recall:			0.6169652265542677
+F1:				0.598364844149208
+Cohen-kappa:	0.21062286195898272
 """
