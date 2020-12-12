@@ -1,4 +1,4 @@
-### Intermediate report 7
+### Intermediate report #7
 
 #### Until now:
 As mentioned in the [previous progress report](https://github.com/harshildarji/TMP-SS-2020/blob/master/intermediate-reports/intermediate_report_6.md), our objective was to work on documentation phase.

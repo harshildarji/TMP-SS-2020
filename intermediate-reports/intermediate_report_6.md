@@ -1,4 +1,4 @@
-### Intermediate report 6
+### Intermediate report #6
 
 #### Until now:
 As mentioned in the [previous progress report](https://git.fim.uni-passau.de/padas/20ss-tmp/team01/-/blob/master/intermediate-reports/intermediate_report_5.md), our objective was to work on evaluation phase.
